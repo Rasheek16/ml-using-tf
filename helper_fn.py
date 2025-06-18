@@ -81,29 +81,61 @@ def precision_recall_plot(precisions, recalls, thresholds, threshold):
     plt.show()
 
 
-def plot_roc_curve(threshold_for_90_precision):
+def plot_roc_curve(threshold_for_90_precision, y_train, y_scores):
     import matplotlib.patches as patches
-    fpr , tpr , thresholds = roc_curve(y_train_5,y_scores)
+    import matplotlib.pyplot as plt
+    from sklearn.metrics import roc_curve
+
+    fpr, tpr, thresholds = roc_curve(y_train, y_scores)
     idx_for_threshold_at_90 = (thresholds <= threshold_for_90_precision).argmax()
     tpr_90, fpr_90 = tpr[idx_for_threshold_at_90], fpr[idx_for_threshold_at_90]
 
     plt.figure(figsize=(6, 5))  # extra code – not needed, just formatting
     plt.plot(fpr, tpr, linewidth=2, label="ROC curve")
-    plt.plot([0, 1], [0, 1], 'k:', label="Random classifier's ROC curve")
+    plt.plot([0, 1], [0, 1], "k:", label="Random classifier's ROC curve")
     plt.plot([fpr_90], [tpr_90], "ko", label="Threshold for 90% precision")
 
     # extra code – just beautifies and saves Figure 3–7
-    plt.gca().add_patch(patches.FancyArrowPatch(
-        (0.20, 0.89), (0.07, 0.70),
-        connectionstyle="arc3,rad=.4",
-        arrowstyle="Simple, tail_width=1.5, head_width=8, head_length=10",
-        color="#444444"))
+    plt.gca().add_patch(
+        patches.FancyArrowPatch(
+            (0.20, 0.89),
+            (0.07, 0.70),
+            connectionstyle="arc3,rad=.4",
+            arrowstyle="Simple, tail_width=1.5, head_width=8, head_length=10",
+            color="#444444",
+        )
+    )
     plt.text(0.12, 0.71, "Higher\nthreshold", color="#333333")
-    plt.xlabel('False Positive Rate (Fall-Out)')
-    plt.ylabel('True Positive Rate (Recall)')
+    plt.xlabel("False Positive Rate (Fall-Out)")
+    plt.ylabel("True Positive Rate (Recall)")
     plt.grid()
     plt.axis([0, 1, 0, 1])
     plt.legend(loc="lower right", fontsize=13)
     # save_fig("roc_curve_plot")
+
+    plt.show()
+
+
+def plot_compare_pr_curves(
+    recalls_clf_one,
+    precisions_clf_one,
+    recalls_clf_two,
+    precisions_clf_two,
+    lable_one,
+    label_two,
+):
+    import matplotlib.pyplot as plt
+
+    plt.figure(figsize=(6, 5))  # extra code – not needed, just formatting
+
+    plt.plot(recalls_clf_one, precisions_clf_one, "b-", linewidth=2, label=lable_one)
+    plt.plot(recalls_clf_two, precisions_clf_two, "--", linewidth=2, label=label_two)
+
+    # extra code – just beautifies and saves Figure 3–8
+    plt.xlabel("Recall")
+    plt.ylabel("Precision")
+    plt.axis([0, 1, 0, 1])
+    plt.grid()
+    plt.legend(loc="lower left")
 
     plt.show()
