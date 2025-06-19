@@ -1,5 +1,5 @@
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import cross_val_score
+from sklearn.linear_model import LogisticRegression # type: ignore 
+from sklearn.model_selection import cross_val_score # type: ignore 
 
 def train_model(X_train, y_train):
     log_clf = LogisticRegression(max_iter=1000, random_state=42)

@@ -1,5 +1,5 @@
-from sklearn.pipeline import Pipeline
-from preprocessing.transformers import EmailToWordCounterTransformer, WordCounterToVectorTransformer
+from sklearn.pipeline import Pipeline # type: ignore 
+from preprocessing.transformers import EmailToWordCounterTransformer, WordCounterToVectorTransformer # type: ignore 
 
 def build_pipeline(vocab_size=1000):
     return Pipeline([

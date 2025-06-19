@@ -1,9 +1,9 @@
 import re
 from collections import Counter
-from sklearn.base import BaseEstimator, TransformerMixin
-from preprocessing.utils import email_to_text
-import nltk
-import urlextract
+from sklearn.base import BaseEstimator, TransformerMixin # type: ignore 
+from preprocessing.utils import email_to_text # type: ignore 
+import nltk # type: ignore 
+import urlextract # type: ignore  
 import numpy as np
 from scipy.sparse import csr_matrix
 
