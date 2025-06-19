@@ -82,9 +82,9 @@ This will:
 ## 📊 Example Output
 
 ```
-Cross-validation score: 0.985
-Precision: 100.00%
-Recall: 92.42%
+['github.com', 'https://youtu.be/7Pq-S557XQU?t=3m32s']
+Precision: 96.88%
+Recall: 97.89%
 ```
 
 ---
