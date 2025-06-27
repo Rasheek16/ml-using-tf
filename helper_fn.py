@@ -139,3 +139,28 @@ def plot_compare_pr_curves(
     plt.legend(loc="lower left")
 
     plt.show()
+
+
+def plot_linear_data(X,y):
+    import matplotlib.pyplot as plt
+
+    plt.plot(X, y, "b.")
+    plt.xlabel("$x_1$")
+    plt.ylabel("$y$")
+    plt.axis([0, 2, 0, 15])
+    plt.grid()
+    plt.show()
+    
+def plot_linear_predictions(X, y, X_new, y_predict, theta_best):
+    import matplotlib.pyplot as plt
+
+    plt.plot(X, y, "b.")
+    plt.plot(X_new, y_predict, "r-", linewidth=2, label="Predictions")
+    plt.xlabel("$x_1$")
+    plt.ylabel("$y$")
+    plt.axis([0, 2, 0, 15])
+    plt.grid()
+    plt.legend(loc="upper left")
+    
+    # extra code – just beautifies and saves Figure 3–9
+    plt.show()
